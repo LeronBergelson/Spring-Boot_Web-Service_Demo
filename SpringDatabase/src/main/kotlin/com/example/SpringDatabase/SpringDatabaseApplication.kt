@@ -21,24 +21,37 @@ interface PlayerDataRepository: JpaRepository<playerdata, Long>{
 
 	@Query(value = "Call GetByPID(:PID)", nativeQuery = true)
 	fun GetByPID(@Param("PID")PID: Int): playerdata
+
+	@Query(value = "Call UpdatePlayerData(:Id, :IsValid, :PID, :Health, :XCoord, :YCoord, :ZCoord)", nativeQuery = true)
+	fun UpdateData(@Param("Id")Id: Long, @Param("IsValid")IsValid: Boolean, @Param("PID")PID: Int, @Param("Health")Health: Float,
+				   @Param("XCoord")XCoord: Float, @Param("YCoord")YCoord: Float, @Param("ZCoord")ZCoord: Float) : playerdata
+
 }
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/PlayerData")
 class PlayerDataRestController(val PlayerDataRepo: PlayerDataRepository)
 {
-	@GetMapping("PlayerData")
+	@GetMapping()
 	fun GetAllPlayerEntries() = PlayerDataRepo.findAll()
 
-	@GetMapping("PlayerData/{PID}")
+	@GetMapping("/{PID}")
 	fun GetPID(@PathVariable(value = "PID") PID: Int) : playerdata
 	{
-		return PlayerDataRepo.GetByPID(PID)
+		var PData = PlayerDataRepo.GetByPID(PID)
+		return PData
 	}
 
-	@PostMapping("PlayerData")
+	@PostMapping()
 	fun SavePlayerData(@RequestBody PlayerData: playerdata){
 		PlayerDataRepo.save(PlayerData)
+	}
+
+	@PutMapping()
+	fun UpdatePlayerData(@RequestBody PlayerData: playerdata)
+	{
+		PlayerDataRepo.UpdateData(PlayerData.Id, PlayerData.isvalid, PlayerData.pid, PlayerData.health, PlayerData.XCoord,
+			PlayerData.YCoord, PlayerData.ZCoord)
 	}
 }
 
