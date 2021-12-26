@@ -40,6 +40,6 @@ class PlayerDataRestController(val PlayerDataRepo: PlayerDataRepository)
     fun UpdatePlayerData(@RequestBody PlayerData: UserPlayerData)
     {
         PlayerDataRepo.UpdateData(PlayerData.email, PlayerData.userpassword, PlayerData.isvalid, PlayerData.pid, PlayerData.health, PlayerData.XCoord,
-            PlayerData.YCoord, PlayerData.ZCoord) // Updates player data with values passed in
+            PlayerData.YCoord, PlayerData.ZCoord, PlayerData.bluestageattempts, PlayerData.yellowstageattempts, PlayerData.redstageattempts) // Updates player data with values passed in
     }
 }

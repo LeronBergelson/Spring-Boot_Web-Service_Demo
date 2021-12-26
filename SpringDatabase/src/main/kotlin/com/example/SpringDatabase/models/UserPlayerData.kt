@@ -15,6 +15,9 @@ class UserPlayerData {
     var XCoord: Float = 0.0f
     var YCoord: Float = 0.0f
     var ZCoord: Float = 0.0f
+    var bluestageattempts: Int = 0
+    var yellowstageattempts: Int = 0
+    var redstageattempts: Int = 0
 
     /*
     @OneToMany(mappedBy = "userPlayerData", fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.ALL))

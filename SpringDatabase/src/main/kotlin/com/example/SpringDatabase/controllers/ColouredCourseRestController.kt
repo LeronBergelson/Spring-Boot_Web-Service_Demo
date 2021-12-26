@@ -7,14 +7,14 @@ import com.example.SpringDatabase.repositories.PlayerDataRepository
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("api/ColouredStageData")
-class ColouredCourseRestController(val ColouredStageRepo: ColouredCourseRepository) {
+@RequestMapping("api/ColouredCourseData")
+class ColouredCourseRestController(val ColouredCourseData: ColouredCourseRepository) {
 
     @GetMapping()
-    fun GetAllPlayerEntries() = ColouredStageRepo.findAll()
+    fun GetAllPlayerEntries() = ColouredCourseData.findAll()
 
     @PostMapping("update")
     fun SavePlayerData(@RequestBody courseData: ColouredStageData){
-        ColouredStageRepo.save(courseData) // Adds player record to the database (if player exists - foreign key assigned through MYSQL)
+        ColouredCourseData.save(courseData) // Adds player record to the database (if player exists - foreign key assigned through MYSQL)
     }
 }

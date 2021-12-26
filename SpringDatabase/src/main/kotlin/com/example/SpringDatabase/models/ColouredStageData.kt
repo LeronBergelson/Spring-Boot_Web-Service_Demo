@@ -8,9 +8,9 @@ class ColouredStageData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var Id: Long = 0
     var email: String = ""
-    var bluestagecompletiontime: Long = 0
-    var yellowstagecompletiontime: Long = 0
-    var redstagecompletiontime: Long = 0
+    var bluestagecompletiontime: Int = 0
+    var yellowstagecompletiontime: Int = 0
+    var redstagecompletiontime: Int = 0
 
     /*
 
