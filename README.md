@@ -1,2 +1,2 @@
 # UE4Project_WebService
-REST API using Kotlin and MySQL Database to store player data retrieved from UE4 Game
+Spring Boot Framework, which was used to develop the back-end web service and REST APIs with Kotlin and MySQL Database. 
